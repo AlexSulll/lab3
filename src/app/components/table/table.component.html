@@ -1,0 +1,77 @@
+<table [dataSource]="dataSource"
+       class="mat-elevation-z8"
+       mat-table>
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef
+        mat-header-cell>
+      Имя
+    </th>
+    <td *matCellDef="let element"
+        mat-cell>
+      {{ element.name }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="level">
+    <th *matHeaderCellDef
+        mat-header-cell>
+      Уровень
+    </th>
+    <td *matCellDef="let element"
+        mat-cell>
+      {{ element.level }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="power">
+    <th *matHeaderCellDef
+        mat-header-cell>
+      Сила
+    </th>
+    <td *matCellDef="let element"
+        mat-cell>
+      {{ element.power }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ability">
+    <th *matHeaderCellDef
+        mat-header-cell>
+      Способности
+    </th>
+    <td *matCellDef="let element"
+        mat-cell>
+      {{ element.ability }}
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="button">
+    <th *matHeaderCellDef
+        mat-header-cell>
+      Удалить запись
+    </th>
+    <td *matCellDef="let element"
+        mat-cell>
+      <div (click)="removeRow(element.id)"
+           class="example-button-row">
+        <div class="example-flex-container">
+          <div class="example-button-container">
+            <button color="primary"
+                    mat-fab>
+              <img src="../../../assets/images/trash.svg"
+                   alt = "button of delete"
+                   class = 'del-buttom'>
+            </button>
+          </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+  <tr *matHeaderRowDef="displayedColumns"
+      mat-header-row>
+  </tr>
+  <tr *matRowDef="let row; columns: displayedColumns"
+      mat-row>
+  </tr>
+</table>

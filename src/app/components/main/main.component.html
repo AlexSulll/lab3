@@ -1,0 +1,100 @@
+<mat-grid-list cols="2">
+  <mat-grid-tile class="first-grid">
+    <mat-dialog-content>
+      <div class="form-wrapper">
+        <form class="example-form">
+          <div>
+            <h3>Имя</h3>
+            <div>
+              <mat-form-field class="example-form-field">
+                <mat-label>
+                  Имя
+                </mat-label>
+                <input [formControl]="heroNameControl"
+                       type="text"
+                       matInput>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+        <form class="example-form">
+          <div>
+            <h3>Сила</h3>
+            <div>
+              <mat-form-field class="example-form-field">
+                <input [formControl]="heroPowerControl"
+                       type="number"
+                       matInput>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+        <div>
+          <h3>Способности</h3>
+          <div>
+            <mat-form-field class="example-form-field">
+              <mat-select multiple [formControl]="heroAbilityControl">
+                <mat-option *ngFor="let element of abilityData"
+                            value="element">
+                  {{ element.ability }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <form class="example-form">
+          <div>
+            <h3>Уровень</h3>
+            <div>
+              <mat-form-field class="example-form-field">
+                <input [formControl]="heroLevelControl"
+                       type="number"
+                       min="1"
+                       max="10"
+                       matInput>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <mat-dialog-actions class="button">
+              <button [disabled]="heroForm.invalid"
+                      (click)="addHero()"
+                      type="reset"
+                      class="button-exit"
+                      color="accent"
+                      mat-raised-button>
+                Создать героя
+              </button>
+            </mat-dialog-actions>
+          </div>
+        </form>
+      </div>
+    </mat-dialog-content>
+  </mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>
+    <form>
+      <div>
+        <h3>Добавление способостей</h3>
+        <div>
+          <mat-form-field class="example-form-field">
+            <input [formControl]="abilityControl"
+                   type="text"
+                   matInput>
+          </mat-form-field>
+        </div>
+        <mat-dialog-actions class="button">
+          <button [disabled]="abilityForm.invalid"
+                  (click)="addAbility()"
+                  type="button"
+                  class="button-exit"
+                  color="accent"
+                  mat-raised-button>
+            Добавить способность
+          </button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
