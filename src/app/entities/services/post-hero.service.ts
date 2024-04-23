@@ -7,8 +7,8 @@ import { HeroInterface } from "../interfaces/hero.interface";
 })
 
 export class heroDataService {
-  private readonly _heroData: HeroInterface[] = heroData;
-  public getHeroes(): HeroInterface[] {
-    return this._heroData;
-  }
+
+  // public postHeroes(value: string[]) {
+  //   console.log('саси');
+  // }
 }

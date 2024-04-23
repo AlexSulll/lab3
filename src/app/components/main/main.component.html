@@ -69,97 +69,106 @@
     </mat-dialog-content>
   </mat-grid-tile>
   <mat-grid-tile [rowspan]="4" [colspan]="4">
-    <div class="text-inside-grid">
-    <h3 class="lvl">Уровень героя от:</h3>
-    <mat-form-field class="mini-input">
-      <input [formControl]="levelFromControl"
-             type="number"
-             matInput>
-    </mat-form-field>
-    <h3>до:</h3>
-    <mat-form-field class="mini-input">
-      <input [formControl]="levelToControl"
-             type="number"
-             matInput>
-    </mat-form-field>
-    <h3>Способности:</h3>
-    <mat-form-field>
-      <mat-select multiple [formControl]="aptitudeControl">
-        <mat-option *ngFor="let element of abilityData" [value]="element.ability">
-          {{ element.ability }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div>
+      <h3>
+        <span>Уровень героя</span>
+      </h3>
+      <br>
+      <h3>
+        <span>Поиск по имени: </span>
+      </h3>
     </div>
     <div>
-    <h3>Поиск по имени</h3>
-    <mat-form-field>
-      <input [formControl]="searchNameControl"
-             type="text"
-             matInput>
-    </mat-form-field>
-    <h3>Сортировка по уровню</h3>
-    <mat-form-field>
-      <mat-select [formControl]="sortLevelControl">
-        <mat-option value="По возрастанию">По возрастанию</mat-option>
-        <mat-option value="По убыванию">По убыванию</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <div>
+        <span>от </span>
+        <mat-form-field class="mini-input">
+          <input [formControl]="levelFromControl"
+                 type="number"
+                 matInput>
+        </mat-form-field>
+        <span> до </span>
+        <mat-form-field class="mini-input">
+          <input [formControl]="levelToControl"
+                 type="number"
+                 matInput>
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input [formControl]="searchNameControl"
+               type="text"
+               matInput>
+      </mat-form-field>
+    </div>
+    <div class="div3">
+      <h3>
+        <span>Способности: </span>
+      </h3>
+      <h3>
+        <span>Сортировка по уровню: </span>
+      </h3>
+    </div>
+    <div>
+      <div>
+        <mat-form-field>
+          <mat-select multiple [formControl]="aptitudeControl">
+            <mat-option *ngFor="let element of abilityData" [value]="element.ability">
+              {{ element.ability }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+      <div>
+        <mat-form-field>
+          <mat-select [formControl]="sortLevelControl">
+            <mat-option value="По возрастанию">По возрастанию</mat-option>
+            <mat-option value="По убыванию">По убыванию</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </mat-grid-tile>
 
-  <mat-grid-tile [rowspan]="4" [colspan]="4">
-    <mat-table [dataSource]="heroData" class="mat-elevation-z8" mat-table>
-      <ng-container matColumnDef="name">
-        <th *matHeaderCellDef
-            mat-header-cell>
-          Имя
-        </th>
-        <td *matCellDef="let element"
-            mat-cell>
-          <mat-accordion class="example-headers-align" multi>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <p>
-                    Имя: <span> {{ element.name }} </span>
-                  </p>
-                </mat-panel-title>
-                <mat-panel-description>
-                  <mat-icon>accessible_forward</mat-icon>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <div>
-                <p>
-                  Сила: {{ element.power }}
-                </p>
-                <p>
-                  Способности: {{ element.aptitude }}
-                </p>
-                <p>
-                  Уроверь: {{ element.level }}
-                </p>
-              </div>
-              <div (click)="removeHero(element.id)"
-                   class="example-button-row">
-                <div class="example-flex-container">
-                  <div class="example-button-container">
-                    <button color="primary"
-                            mat-fab>
-                      <img src="../../../assets/images/trash.svg"
-                           alt = "button of delete"
-                           class = 'del-buttom'>
-                    </button>
+  <mat-grid-tile [rowspan]="4" [colspan]="4" class="cards-hero">
+    <div class="cards">
+      <section>
+        <mat-accordion class="example-headers-align" *ngFor="let item of heroData">
+          <mat-expansion-panel class="expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Имя: {{ item.name }} </mat-panel-title>
+              <mat-panel-description
+              ></mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              <p>
+                Сила: {{ item.power }}
+              </p>
+              <p>
+                Способности: {{ item.aptitude }}
+              </p>
+              <p>
+                Уроверь: {{ item.level }}
+              </p>
+            </div>
+            <div (click)="removeHero(item.id)"
+                 class="example-button-row">
+              <div class="example-flex-container">
+                <div class="example-button-container">
+                  <div class = "delhero">
+                  <button color="primary"
+                          mat-raised-button>
+                    Удалить героя
+                  </button>
                   </div>
                 </div>
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </td>
-      </ng-container>
-
-    </mat-table>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </section>
+    </div>
   </mat-grid-tile>
+
   <mat-grid-tile [rowspan]="2" [colspan]="2" class="ability-add">
     <form>
       <div>

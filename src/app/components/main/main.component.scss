@@ -9,7 +9,7 @@
 
   .example-form-field {
     text-align: center;
-    width: 475px;
+    width: 450px;
   }
 
   example-section {
@@ -30,26 +30,70 @@
     display: flex;
     justify-content: space-between;
     width: 425px;
-    //margin: 0 auto;
   }
 
-  .lvl {
-    margin-left: 3%;
+  .mini-input {
+    max-width: 20%;
   }
 
-  //.text-inside-grid {
-  //  position: absolute;
-  //  left: 5px;
-  //  //display: ;
-  //}
-  //.mini-input {
-  //  max-width: 7%;
-  //}
-  //.ability-add {
-  //  max-width: 35%;
-  //  max-height: 20%;
-  //}
-  //.first-grid {
-  //  max-height: 60%;
-  //}
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .example-button-container-edit {
+    display: flex;
+    justify-content: center;
+    width: 160px;
+  }
+
+  .del-button {
+    width: 24px;
+  }
+  .example-action-buttons {
+    padding-bottom: 20px;
+  }
+
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+    width: 675px;
+  }
+
+  .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+  .cards-hero {
+    overflow: auto;
+  }
+  .cards {
+    margin-top: auto;
+    display: flex;
+    justify-self: auto;
+    margin-bottom: auto;
+  }
+
 }

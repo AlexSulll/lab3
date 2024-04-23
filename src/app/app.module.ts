@@ -16,6 +16,8 @@ import { MainComponent } from './components/main/main.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatRippleModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatGridListModule,
     MatExpansionModule,
     MatIconModule,
+    MatProgressBarModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

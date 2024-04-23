@@ -3,9 +3,10 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { FormBuilderService } from "../../entities/services/form-builder.service";
 import { AbilityInterface } from "../../entities/interfaces/ability.interface";
 import { HeroInterface } from "../../entities/interfaces/hero.interface";
-import { heroData } from "../../entities/shared/hero-data";
 import { abilityDataService } from "../../entities/services/get-ability.service";
-import { heroDataService } from "../../entities/services/get-hero.service";
+import { heroDataService } from "../../entities/services/hero.service";
+import { COLUMNS_SCHEMA } from "../../entities/shared/columns-data";
+import { IColumn } from "../../entities/interfaces/column.interface";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class MainComponent {
   public abilityForm: FormGroup = this._formBuilderService.abilityForm;
   public heroForm: FormGroup = this._formBuilderService.heroForm;
   public sortForm: FormGroup = this._formBuilderService.sortForm;
+  public displayedColumns: string[] = COLUMNS_SCHEMA.map((colum: IColumn) => colum.key);
   constructor(
     private readonly _formBuilderService: FormBuilderService,
     private readonly _abilitiesData: abilityDataService,
@@ -35,9 +37,6 @@ export class MainComponent {
   public heroData: HeroInterface[] = this._heroesData.getHeroes();
   public addHero(): void {
     const hero = this.heroForm.getRawValue();
-    //TODO
-    // const abilities = this.heroForm.value.ability;
-    // console.log(abilities);
     if (hero) {
       const newHero = {id: (this.heroData[this.heroData.length - 1].id + 1), ...hero}
       this.heroData.push(newHero);
@@ -46,6 +45,7 @@ export class MainComponent {
   }
   public removeHero(id: number): void {
     this.heroData = this.heroData.filter((element: HeroInterface): boolean => element.id !== id);
+    this._heroesData.postHeroes(this.heroData);
   }
   public get abilityControl(): FormControl {
     return this.abilityForm.get('ability') as FormControl;

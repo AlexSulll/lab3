@@ -17,7 +17,7 @@ export const COLUMNS_SCHEMA: IColumn[] = [
     label: "Сила"
   },
   {
-    key: "ability",
+    key: "aptitude",
     type: "text",
     label: "Способности"
   },
