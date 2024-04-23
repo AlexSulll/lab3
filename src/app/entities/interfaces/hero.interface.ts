@@ -3,5 +3,5 @@ export interface HeroInterface {
   name: string | null,
   power: number | null,
   aptitude: string[] | null,
-  level: number | null,
+  level: number
 }

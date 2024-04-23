@@ -31,9 +31,9 @@ export class FormBuilderService {
     return this._formBuilder.group({
       'levelFrom': [null],
       'levelTo': [null],
-      'aptitude': [null],
+      'aptitude': [[null]],
       'searchName': [null],
-      'sortLevel': [null]
+      'sortLevel': ["1"]
     });
   }
 }

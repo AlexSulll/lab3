@@ -68,7 +68,7 @@
         </form>
     </mat-dialog-content>
   </mat-grid-tile>
-  <mat-grid-tile [rowspan]="4" [colspan]="4">
+  <mat-grid-tile [rowspan]="2" [colspan]="4">
     <div>
       <h3>
         <span>Уровень героя</span>
@@ -83,12 +83,16 @@
         <span>от </span>
         <mat-form-field class="mini-input">
           <input [formControl]="levelFromControl"
+                 max="10"
+                 min="1"
                  type="number"
                  matInput>
         </mat-form-field>
         <span> до </span>
         <mat-form-field class="mini-input">
           <input [formControl]="levelToControl"
+                 max="10"
+                 min="1"
                  type="number"
                  matInput>
         </mat-form-field>
@@ -121,18 +125,19 @@
       <div>
         <mat-form-field>
           <mat-select [formControl]="sortLevelControl">
-            <mat-option value="По возрастанию">По возрастанию</mat-option>
-            <mat-option value="По убыванию">По убыванию</mat-option>
+            <mat-option value="1">По возрастанию</mat-option>
+            <mat-option value="0">По убыванию</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
+    <button mat-raised-button (click)="sortGroup()">Отправить форму</button>
   </mat-grid-tile>
 
-  <mat-grid-tile [rowspan]="4" [colspan]="4" class="cards-hero">
+  <mat-grid-tile [rowspan]="6" [colspan]="4" class="cards-hero">
     <div class="cards">
       <section>
-        <mat-accordion class="example-headers-align" *ngFor="let item of heroData">
+        <mat-accordion class="example-headers-align" *ngFor="let item of (heroData | sortPipe:sortGroup())">
           <mat-expansion-panel class="expansion-panel">
             <mat-expansion-panel-header>
               <mat-panel-title> Имя: {{ item.name }} </mat-panel-title>
@@ -147,7 +152,7 @@
                 Способности: {{ item.aptitude }}
               </p>
               <p>
-                Уроверь: {{ item.level }}
+                Уровень: {{ item.level }}
               </p>
             </div>
             <div (click)="removeHero(item.id)"

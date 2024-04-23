@@ -5,8 +5,7 @@ import { AbilityInterface } from "../../entities/interfaces/ability.interface";
 import { HeroInterface } from "../../entities/interfaces/hero.interface";
 import { abilityDataService } from "../../entities/services/get-ability.service";
 import { heroDataService } from "../../entities/services/hero.service";
-import { COLUMNS_SCHEMA } from "../../entities/shared/columns-data";
-import { IColumn } from "../../entities/interfaces/column.interface";
+import { SortInterface } from "../../entities/interfaces/sort.interface";
 
 
 @Component({
@@ -19,7 +18,6 @@ export class MainComponent {
   public abilityForm: FormGroup = this._formBuilderService.abilityForm;
   public heroForm: FormGroup = this._formBuilderService.heroForm;
   public sortForm: FormGroup = this._formBuilderService.sortForm;
-  public displayedColumns: string[] = COLUMNS_SCHEMA.map((colum: IColumn) => colum.key);
   constructor(
     private readonly _formBuilderService: FormBuilderService,
     private readonly _abilitiesData: abilityDataService,
@@ -46,6 +44,9 @@ export class MainComponent {
   public removeHero(id: number): void {
     this.heroData = this.heroData.filter((element: HeroInterface): boolean => element.id !== id);
     this._heroesData.postHeroes(this.heroData);
+  }
+  public sortGroup() {
+    return this.sortForm.getRawValue();
   }
   public get abilityControl(): FormControl {
     return this.abilityForm.get('ability') as FormControl;
