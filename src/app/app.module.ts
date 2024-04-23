@@ -14,6 +14,9 @@ import { MatTableModule } from "@angular/material/table";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { MainComponent } from './components/main/main.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
+
 
 @NgModule({
   declarations: [
@@ -21,21 +24,23 @@ import {MatGridListModule} from "@angular/material/grid-list";
     TableComponent,
     MainComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        MatDialogModule,
-        MatTableModule,
-        RouterOutlet,
-        RouterLink,
-        RouterLinkActive,
-        MatGridListModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatTableModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    MatGridListModule,
+    MatExpansionModule,
+    MatIconModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

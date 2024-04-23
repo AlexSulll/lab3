@@ -2,17 +2,9 @@
   .mat-grid-tile {
     background: lightblue;
   }
-  .first-grid {
 
-  }
-  .form-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background: azure;
-  }
   .example-form {
-    width: 400px;
+    width: 100px;
   }
 
   .example-form-field {
@@ -38,7 +30,26 @@
     display: flex;
     justify-content: space-between;
     width: 425px;
-    margin: 0 auto;
+    //margin: 0 auto;
   }
 
+  .lvl {
+    margin-left: 3%;
+  }
+
+  //.text-inside-grid {
+  //  position: absolute;
+  //  left: 5px;
+  //  //display: ;
+  //}
+  //.mini-input {
+  //  max-width: 7%;
+  //}
+  //.ability-add {
+  //  max-width: 35%;
+  //  max-height: 20%;
+  //}
+  //.first-grid {
+  //  max-height: 60%;
+  //}
 }

@@ -1,7 +1,6 @@
-<mat-grid-list cols="2">
-  <mat-grid-tile class="first-grid">
+<mat-grid-list cols="6" rowHeight="100px">
+  <mat-grid-tile class="first-grid" [colspan]="2" [rowspan]="6">
     <mat-dialog-content>
-      <div class="form-wrapper">
         <form class="example-form">
           <div>
             <h3>Имя</h3>
@@ -33,9 +32,8 @@
           <h3>Способности</h3>
           <div>
             <mat-form-field class="example-form-field">
-              <mat-select multiple [formControl]="heroAbilityControl">
-                <mat-option *ngFor="let element of abilityData"
-                            value="element">
+              <mat-select multiple [formControl]="heroAptitudeControl">
+                <mat-option *ngFor="let element of abilityData" [value]="element.ability">
                   {{ element.ability }}
                 </mat-option>
               </mat-select>
@@ -60,7 +58,7 @@
               <button [disabled]="heroForm.invalid"
                       (click)="addHero()"
                       type="reset"
-                      class="button-exit"
+                      class="button-add"
                       color="accent"
                       mat-raised-button>
                 Создать героя
@@ -68,11 +66,101 @@
             </mat-dialog-actions>
           </div>
         </form>
-      </div>
     </mat-dialog-content>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>
+  <mat-grid-tile [rowspan]="4" [colspan]="4">
+    <div class="text-inside-grid">
+    <h3 class="lvl">Уровень героя от:</h3>
+    <mat-form-field class="mini-input">
+      <input [formControl]="levelFromControl"
+             type="number"
+             matInput>
+    </mat-form-field>
+    <h3>до:</h3>
+    <mat-form-field class="mini-input">
+      <input [formControl]="levelToControl"
+             type="number"
+             matInput>
+    </mat-form-field>
+    <h3>Способности:</h3>
+    <mat-form-field>
+      <mat-select multiple [formControl]="aptitudeControl">
+        <mat-option *ngFor="let element of abilityData" [value]="element.ability">
+          {{ element.ability }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div>
+    <h3>Поиск по имени</h3>
+    <mat-form-field>
+      <input [formControl]="searchNameControl"
+             type="text"
+             matInput>
+    </mat-form-field>
+    <h3>Сортировка по уровню</h3>
+    <mat-form-field>
+      <mat-select [formControl]="sortLevelControl">
+        <mat-option value="По возрастанию">По возрастанию</mat-option>
+        <mat-option value="По убыванию">По убыванию</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile [rowspan]="4" [colspan]="4">
+    <mat-table [dataSource]="heroData" class="mat-elevation-z8" mat-table>
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef
+            mat-header-cell>
+          Имя
+        </th>
+        <td *matCellDef="let element"
+            mat-cell>
+          <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <p>
+                    Имя: <span> {{ element.name }} </span>
+                  </p>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <mat-icon>accessible_forward</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div>
+                <p>
+                  Сила: {{ element.power }}
+                </p>
+                <p>
+                  Способности: {{ element.aptitude }}
+                </p>
+                <p>
+                  Уроверь: {{ element.level }}
+                </p>
+              </div>
+              <div (click)="removeHero(element.id)"
+                   class="example-button-row">
+                <div class="example-flex-container">
+                  <div class="example-button-container">
+                    <button color="primary"
+                            mat-fab>
+                      <img src="../../../assets/images/trash.svg"
+                           alt = "button of delete"
+                           class = 'del-buttom'>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </td>
+      </ng-container>
+
+    </mat-table>
+  </mat-grid-tile>
+  <mat-grid-tile [rowspan]="2" [colspan]="2" class="ability-add">
     <form>
       <div>
         <h3>Добавление способостей</h3>
@@ -87,7 +175,7 @@
           <button [disabled]="abilityForm.invalid"
                   (click)="addAbility()"
                   type="button"
-                  class="button-exit"
+                  class="button-add"
                   color="accent"
                   mat-raised-button>
             Добавить способность
@@ -96,5 +184,4 @@
       </div>
     </form>
   </mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
 </mat-grid-list>

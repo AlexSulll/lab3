@@ -2,6 +2,6 @@ export interface HeroInterface {
   id: number,
   name: string | null,
   power: number | null,
-  ability: any | null,
+  aptitude: string[] | null,
   level: number | null,
 }
