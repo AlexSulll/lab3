@@ -27,13 +27,4 @@ export class FormBuilderService {
     });
   }
 
-  public get sortForm() {
-    return this._formBuilder.group({
-      'levelFrom': [null],
-      'levelTo': [null],
-      'aptitude': [[null]],
-      'searchName': [null],
-      'sortLevel': ["1"]
-    });
-  }
 }

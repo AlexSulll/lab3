@@ -19,6 +19,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatRippleModule } from "@angular/material/core";
 import { sortPipe } from './entities/pipes/sorthero.pipe';
+import { search } from "./entities/pipes/nameSearch.pipe";
 
 
 @NgModule({
@@ -26,7 +27,6 @@ import { sortPipe } from './entities/pipes/sorthero.pipe';
     AppComponent,
     TableComponent,
     MainComponent,
-    sortPipe
   ],
   imports: [
     BrowserModule,
@@ -47,6 +47,8 @@ import { sortPipe } from './entities/pipes/sorthero.pipe';
     MatProgressBarModule,
     MatRippleModule,
     FormsModule,
+    sortPipe,
+    search
   ],
   providers: [],
   bootstrap: [AppComponent]

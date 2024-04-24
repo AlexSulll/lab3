@@ -4,5 +4,5 @@ export interface SortInterface {
   levelTo: number | null | undefined,
   aptitude: string[] | null | undefined,
   searchName: string | null | undefined,
-  sortLevel: string | null | undefined
+  sortLevel: string
 }
