@@ -125,8 +125,8 @@
       <div>
         <mat-form-field>
           <mat-select>
-            <mat-option value="1" (click)="sortData('1')">По возрастанию</mat-option>
-            <mat-option value="0" (click)="sortData('0')">По убыванию</mat-option>
+            <mat-option (click)="sortData('1')">По возрастанию</mat-option>
+            <mat-option (click)="sortData('0')">По убыванию</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -136,7 +136,7 @@
   <mat-grid-tile [rowspan]="6" [colspan]="4" class="cards-hero">
     <div class="cards">
       <section>
-        <mat-accordion class="example-headers-align" *ngFor="let item of (heroData | search:levelFrom:levelTo:abilityarr:searchText)">
+        <mat-accordion class="example-headers-align" *ngFor="let item of (heroData | search:searchText | levelfromsort:levelFrom | leveltosort:levelTo | abilitysort:abilityarr)">
           <mat-expansion-panel class="expansion-panel">
             <mat-expansion-panel-header>
               <mat-panel-title> Имя: {{ item.name }} </mat-panel-title>

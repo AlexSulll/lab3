@@ -18,8 +18,10 @@ import { MatExpansionModule } from "@angular/material/expansion";
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatRippleModule } from "@angular/material/core";
-import { sortPipe } from './entities/pipes/sorthero.pipe';
-import { search } from "./entities/pipes/nameSearch.pipe";
+import { Search } from "./entities/pipes/nameSearch.pipe";
+import { LevelFromPipe } from './entities/pipes/levelfrom.pipe';
+import { AbilitysortPipe } from './entities/pipes/abilitysort.pipe';
+import { LevelToPipe } from './entities/pipes/levelto.pipe';
 
 
 @NgModule({
@@ -27,6 +29,10 @@ import { search } from "./entities/pipes/nameSearch.pipe";
     AppComponent,
     TableComponent,
     MainComponent,
+    LevelFromPipe,
+    AbilitysortPipe,
+    LevelToPipe,
+    Search
   ],
   imports: [
     BrowserModule,
@@ -47,8 +53,6 @@ import { search } from "./entities/pipes/nameSearch.pipe";
     MatProgressBarModule,
     MatRippleModule,
     FormsModule,
-    sortPipe,
-    search
   ],
   providers: [],
   bootstrap: [AppComponent]

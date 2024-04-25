@@ -13,6 +13,10 @@ import { heroDataService } from "../../entities/services/hero.service";
 })
 
 export class MainComponent {
+  public searchText: string = "";
+  public levelFrom: number | null = null;
+  public levelTo: number | null = null;
+  public abilityarr: string[] = [];
   public abilityForm: FormGroup = this._formBuilderService.abilityForm;
   public heroForm: FormGroup = this._formBuilderService.heroForm;
   constructor(
@@ -57,10 +61,6 @@ export class MainComponent {
   public get heroLevelControl(): FormControl {
     return this.heroForm.get('level') as FormControl;
   }
-  public searchText: string = "";
-  public levelFrom: number | null = null;
-  public levelTo: number | null = null;
-  public abilityarr: string[] | null = null;
   public sortData(value: string): void {
     if (value === "1") {
       this.heroData = this.heroData.slice().sort((a: HeroInterface, b: HeroInterface) => a.level - b.level);
@@ -69,16 +69,4 @@ export class MainComponent {
       this.heroData = this.heroData.slice().sort((a: HeroInterface, b: HeroInterface) => b.level - a.level);
     }
   }
-  // public myFunction() {
-  //   const newData: any = [];
-  //   let levelFrom: any, levelTo: any;
-  //   levelFrom = document.getElementById('levelFrom');
-  //   levelTo = document.getElementById('levelTo');
-  //   this.heroData.forEach((item: object, index: number): void => {
-  //     if (this.heroData[index].level > levelFrom && this.heroData[index].level < levelTo) {
-  //       newData.push(this.heroData[index]);
-  //     }
-  //   })
-  //   this.heroData = newData;
-  // }
 }
