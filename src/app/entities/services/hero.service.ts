@@ -8,9 +8,21 @@ import { HeroInterface } from "../interfaces/hero.interface";
 
 export class heroDataService {
   private _heroData: HeroInterface[] = heroData;
+
+  /**
+   * Функция которая возвращает состояние массива в данный момент. Создано лишь только для отображения изменений на сайте. Имитация get-запроса
+   *
+   * @return {HeroInterface[]}
+   */
   public getHeroes(): HeroInterface[] {
     return this._heroData;
   }
+
+  /**
+   * Функция для записи изменений в массив. Имитация post-запроса.
+   *
+   * @param {HeroInterface[]} value - новый массив героев
+   */
   public postHeroes(value: HeroInterface[]): void {
     this._heroData = value;
   }

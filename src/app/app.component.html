@@ -1,7 +1,17 @@
 <header>
   <div class="example-button-row">
-    <button mat-raised-button color="primary" routerLink="/main-component" routerLinkActive="activebutton">На главную</button>
-    <button mat-raised-button color="accent" routerLink="/table-component" routerLinkActive="activebutton">Таблица</button>
+    <button routerLink="/main-component"
+            routerLinkActive="activebutton"
+            color="primary"
+            mat-raised-button>
+      На главную
+    </button>
+    <button routerLink="/table-component"
+            routerLinkActive="activebutton"
+            color="accent"
+            mat-raised-button>
+      Таблица
+    </button>
   </div>
 </header>
 <router-outlet></router-outlet>

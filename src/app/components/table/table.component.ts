@@ -11,10 +11,19 @@ import { heroDataService } from "../../entities/services/hero.service";
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
-  constructor(private readonly _heroesData: heroDataService) {
+  constructor(
+    private readonly _heroesData: heroDataService
+  ) {
   }
   public displayedColumns: string[] = COLUMNS_SCHEMA.map((colum: IColumn) => colum.key);
   public dataSource: HeroInterface[] = this._heroesData.getHeroes();
+
+  /**
+   * Функция для удаления героя из таблицы по его id
+   *
+   * @param {number} id - id героя
+   * @public
+   */
   public removeRow(id: number): void {
     this.dataSource = this.dataSource.filter((element: HeroInterface): boolean => element.id !== id);
     this._heroesData.postHeroes(this.dataSource);

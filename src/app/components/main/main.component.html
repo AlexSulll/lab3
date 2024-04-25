@@ -1,74 +1,80 @@
-<mat-grid-list cols="6" rowHeight="100px">
-  <mat-grid-tile class="first-grid" [colspan]="2" [rowspan]="6">
+<mat-grid-list cols="6"
+               rowHeight="100px">
+  <mat-grid-tile [colspan]="2"
+                 [rowspan]="6"
+                 class="first-grid">
     <mat-dialog-content>
-        <form class="example-form">
-          <div>
-            <h3>Имя</h3>
-            <div>
-              <mat-form-field class="example-form-field">
-                <mat-label>
-                  Имя
-                </mat-label>
-                <input [formControl]="heroNameControl"
-                       type="text"
-                       matInput>
-              </mat-form-field>
-            </div>
-          </div>
-        </form>
-        <form class="example-form">
-          <div>
-            <h3>Сила</h3>
-            <div>
-              <mat-form-field class="example-form-field">
-                <input [formControl]="heroPowerControl"
-                       type="number"
-                       matInput>
-              </mat-form-field>
-            </div>
-          </div>
-        </form>
+      <form class="example-form">
         <div>
-          <h3>Способности</h3>
+          <h3>Имя</h3>
           <div>
             <mat-form-field class="example-form-field">
-              <mat-select multiple [formControl]="heroAptitudeControl">
-                <mat-option *ngFor="let element of abilityData" [value]="element.ability">
-                  {{ element.ability }}
-                </mat-option>
-              </mat-select>
+              <mat-label>
+                Имя
+              </mat-label>
+              <input [formControl]="heroNameControl"
+                     type="text"
+                     matInput>
             </mat-form-field>
           </div>
         </div>
-        <form class="example-form">
+      </form>
+      <form class="example-form">
+        <div>
+          <h3>Сила</h3>
           <div>
-            <h3>Уровень</h3>
-            <div>
-              <mat-form-field class="example-form-field">
-                <input [formControl]="heroLevelControl"
-                       type="number"
-                       min="1"
-                       max="10"
-                       matInput>
-              </mat-form-field>
-            </div>
+            <mat-form-field class="example-form-field">
+              <input [formControl]="heroPowerControl"
+                     type="number"
+                     matInput>
+            </mat-form-field>
           </div>
+        </div>
+      </form>
+      <div>
+        <h3>Способности</h3>
+        <div>
+          <mat-form-field class="example-form-field">
+            <mat-select [formControl]="heroAptitudeControl"
+                        multiple>
+              <mat-option *ngFor="let element of abilityData"
+                          [value]="element.ability">
+                {{ element.ability }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <form class="example-form">
+        <div>
+          <h3>Уровень</h3>
           <div>
-            <mat-dialog-actions class="button">
-              <button [disabled]="heroForm.invalid"
-                      (click)="addHero()"
-                      type="reset"
-                      class="button-add"
-                      color="accent"
-                      mat-raised-button>
-                Создать героя
-              </button>
-            </mat-dialog-actions>
+            <mat-form-field class="example-form-field">
+              <input [formControl]="heroLevelControl"
+                     type="number"
+                     min="1"
+                     max="10"
+                     matInput>
+            </mat-form-field>
           </div>
-        </form>
+        </div>
+        <div>
+          <mat-dialog-actions class="button">
+            <button [disabled]="heroForm.invalid"
+                    (click)="addHero()"
+                    type="reset"
+                    class="button-add"
+                    color="accent"
+                    mat-raised-button>
+              Создать героя
+            </button>
+          </mat-dialog-actions>
+        </div>
+      </form>
     </mat-dialog-content>
   </mat-grid-tile>
-  <mat-grid-tile [rowspan]="2" [colspan]="4">
+  <mat-grid-tile [rowspan]="2"
+                 [colspan]="4">
     <div>
       <h3>
         <span>Уровень героя</span>
@@ -114,8 +120,10 @@
     <div>
       <div>
         <mat-form-field>
-          <mat-select multiple [(ngModel)]="abilityarr">
-            <mat-option *ngFor="let element of abilityData" [value]="element.ability">
+          <mat-select [(ngModel)]="abilityarr"
+                      multiple>
+            <mat-option *ngFor="let element of abilityData"
+                        [value]="element.ability">
               {{ element.ability }}
             </mat-option>
           </mat-select>
@@ -125,21 +133,26 @@
       <div>
         <mat-form-field>
           <mat-select>
-            <mat-option (click)="sortData('1')">По возрастанию</mat-option>
-            <mat-option (click)="sortData('0')">По убыванию</mat-option>
+            <mat-option value="По возрастанию" (click)="sortData('1')">По возрастанию</mat-option>
+            <mat-option value="По убыванию" (click)="sortData('0')">По убыванию</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
   </mat-grid-tile>
-
-  <mat-grid-tile [rowspan]="6" [colspan]="4" class="cards-hero">
+  <mat-grid-tile [rowspan]="6"
+                 [colspan]="4"
+                 class="cards-hero">
     <div class="cards">
       <section>
-        <mat-accordion class="example-headers-align" *ngFor="let item of (heroData | search:searchText | levelfromsort:levelFrom | leveltosort:levelTo | abilitysort:abilityarr)">
+        <mat-accordion *ngFor="let item of (heroData | search:searchText | levelfromsort:levelFrom | leveltosort:levelTo | abilitysort:abilityarr)"
+                       class="example-headers-align">
           <mat-expansion-panel class="expansion-panel">
             <mat-expansion-panel-header>
-              <mat-panel-title> Имя: {{ item.name }} </mat-panel-title>
+              <mat-panel-title>
+                <span>Имя:&nbsp;</span>
+                {{ item.name }}
+              </mat-panel-title>
               <mat-panel-description
               ></mat-panel-description>
             </mat-expansion-panel-header>
@@ -172,8 +185,9 @@
       </section>
     </div>
   </mat-grid-tile>
-
-  <mat-grid-tile [rowspan]="2" [colspan]="2" class="ability-add">
+  <mat-grid-tile [rowspan]="2"
+                 [colspan]="2"
+                 class="ability-add">
     <form>
       <div>
         <h3>Добавление способостей</h3>
