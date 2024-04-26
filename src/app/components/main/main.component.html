@@ -13,8 +13,18 @@
                 Имя
               </mat-label>
               <input [formControl]="heroNameControl"
+                     [errorStateMatcher]="matcher"
                      type="text"
                      matInput>
+              <mat-hint>
+                Корректные данные
+              </mat-hint>
+              <mat-error *ngIf="heroNameControl.hasError('pattern') && !heroNameControl.hasError('required')">
+                Вводить можно только <strong>буквы!</strong>
+              </mat-error>
+              <mat-error *ngIf="heroNameControl.hasError('required')">
+                Введите имя героя
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -27,6 +37,15 @@
               <input [formControl]="heroPowerControl"
                      type="number"
                      matInput>
+              <mat-error *ngIf="heroPowerControl.hasError('max')">
+                Максимальная сила героя 10
+              </mat-error>
+              <mat-error *ngIf="heroPowerControl.hasError('min')">
+                Минимальная сила героя 1
+              </mat-error>
+              <mat-error *ngIf="heroNameControl.hasError('required')">
+                Введите силу героя
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -42,6 +61,9 @@
                 {{ element.ability }}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="heroAptitudeControl.hasError('required')">
+              Выберите способности героя. Либо добавьте новые ниже
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -55,6 +77,15 @@
                      min="1"
                      max="10"
                      matInput>
+              <mat-error *ngIf="heroLevelControl.hasError('max')">
+                Максимальный уровень героя 10
+              </mat-error>
+              <mat-error *ngIf="heroLevelControl.hasError('min')">
+                Минимальный уровень героя 1
+              </mat-error>
+              <mat-error *ngIf="heroLevelControl.hasError('required')">
+                Введите уровень героя
+              </mat-error>
             </mat-form-field>
           </div>
         </div>

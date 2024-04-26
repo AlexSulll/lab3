@@ -5,6 +5,7 @@ import { AbilityInterface } from "../../entities/interfaces/ability.interface";
 import { HeroInterface } from "../../entities/interfaces/hero.interface";
 import { abilityDataService } from "../../entities/services/get-ability.service";
 import { heroDataService } from "../../entities/services/hero.service";
+import { MyErrorStateMatcher } from "../../entities/classes/my-error-state-matcher.class";
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,7 @@ export class MainComponent {
   public levelFrom: number | null = null;
   public levelTo: number | null = null;
   public abilityarr: string[] = [];
+  public matcher: MyErrorStateMatcher = new MyErrorStateMatcher();
 
   constructor(
     private readonly _formBuilderService: FormBuilderService,
